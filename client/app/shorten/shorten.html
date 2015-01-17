@@ -1,5 +1,16 @@
 <div id='container'>
-<!-- Your code here -->
+
+  <form name="shortenForm" novalidate ng-submit="addLink()">
+    Enter URL
+    <input type="url" name="input" ng-model="link" required ng-class="{ 'error' : shortenForm.input.$error }">
+
+    <button type="submit">Submit</button>
+<!--     <span ng-show="shortenForm.input.$error.required">
+      Required!</span>
+    <span ng-show="shortenForm.input.$error.url">
+      Not valid url!</span>
+ -->
+  </form>
 
 </div>
 
