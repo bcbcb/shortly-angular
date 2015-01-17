@@ -2,14 +2,14 @@
 <ul>
   <li><a href='/' class='index'>All Links</a></li>
   <li><a href='/#/create' class='create'>Shorten</a></li>
-  <li><a href='/logout' class='logout'>Logout</a></li>
+  <li><span class='logout' ng-click='signout()'>Logout</span></li>
   <li><input type="text" ng-model="searchString" placeholder="Enter your search terms">
 </ul>
 </div>
 
 <div id='container'>
 
-  <div ng-repeat="link in data.links | orderBy:'-visits' | filter:searchString" class="link">
+  <div ng-repeat="link in data | orderBy:'-visits' | filter:searchString" class="link">
   <img src='/assets/redirect_icon.png'/>
   <div class='info'>
     <div class='visits'><span class='count'>{{ link.visits }}</span>Visits</div>

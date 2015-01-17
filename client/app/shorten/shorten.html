@@ -2,16 +2,13 @@
 
   <form name="shortenForm" novalidate ng-submit="addLink()">
     Enter URL
-    <input type="url" name="input" ng-model="url" required ng-class="{ 'error' : shortenForm.input.$error }">
+    <input type="url" name="input" ng-model="url" required>
 
-    <button type="submit">Submit</button>
-<!--     <span ng-show="shortenForm.input.$error.required">
-      Required!</span>
-    <span ng-show="shortenForm.input.$error.url">
-      Not valid url!</span>
- -->
+    <button type="submit" ng-disabled="!isValidUrl(url)">Submit</button>
+
   </form>
 
+{{ !!isValidUrl(url) }}
 </div>
 
 

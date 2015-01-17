@@ -1,18 +1,20 @@
 angular.module('shortly.links', [])
 
-.controller('LinksController', function ($scope, $http, Links) {
+.controller('LinksController', function ($scope, $http, Links, Auth) {
+  $scope.signout = function () {
+    Auth.signout($scope.user);
+  };
+
   $scope.data = {};
+
   $scope.getLinks = function () {
-    $http.get('/api/links')
-      .success(function(response) {
-        $scope.data.links = response;
+    Links.getLinks()
+      .then( function (res) {
+        $scope.data = res.data;
       });
   };
+
   $scope.getLinks();
-})
 
-.factory('Links', function () {
-  var LinkInstance;
-
-  return LinkInstance;
 });
+

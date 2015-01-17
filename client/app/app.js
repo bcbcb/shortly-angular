@@ -16,21 +16,23 @@ angular.module('shortly', [
       controller: 'AuthController'
     })
     // Your code here
-    .when('/', {
+    .when('/links', {
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'LinksController',
+      requireLogin: true
     })
     .when('/create', {
       templateUrl: 'app/shorten/shorten.html',
-      controller: 'ShortenController'
+      controller: 'ShortenController',
+      requireLogin: true
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/links'
     });
 
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
-    $httpProvider.interceptors.push('AttachTokens');
+  $httpProvider.interceptors.push('AttachTokens');
 })
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
