@@ -1,6 +1,6 @@
 angular.module('shortly.links', [])
 
-.controller('LinksController', function ($scope, $http, Links, Auth) {
+.controller('LinksController', function ($scope, $http, $timeout, Links, Auth) {
   $scope.signout = function () {
     Auth.signout($scope.user);
   };
@@ -14,7 +14,9 @@ angular.module('shortly.links', [])
       });
   };
 
-  $scope.getLinks();
+  $timeout(function () {
+    $scope.getLinks();
+  }, 100);
 
 });
 
